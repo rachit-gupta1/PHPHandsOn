@@ -6,16 +6,16 @@
     <script type="text/javascript">
     function checkPassword(input)
     {
-      if(input.value!=document.getElementById('password').value)
-      {
-        input.setCustomValidity("The two passwords dont match");
-      }
-      else
-      {
-        input.setCustomValidity("");
-      }
-  }
-</script>
+        if(input.value!=document.getElementById('password').value)
+        {
+            input.setCustomValidity("The two passwords dont match");
+        }
+        else
+        {
+            input.setCustomValidity("");
+        }
+    }
+    </script>
 </head>
 <body>
     <h1 class="text-center">Create Account</h1>
