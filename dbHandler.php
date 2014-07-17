@@ -22,13 +22,13 @@ class Db_Handler
 	{
 		if($this->connection = mysqli_connect($this->host, $this->userName, $this->password))
 		{
-			$createDBQuery = "CREATE DATABASE IF NOT EXISTS `$this->dbName`";
+			$createDBQuery = "CREATE DATABASE IF NOT EXISTS $this->dbName";
 			if (mysqli_query($this->connection, $createDBQuery)) 
 			{
 				$this->connection->select_db($this->dbName);
-				$createTableQuery = "CREATE TABLE `$this->tableName` (`emailId` varchar(50) primary key, ".
-									"`password` varchar(50), `fName` varchar(50), `lName` varchar(50));";
-				$val = mysqli_query($this->connection, 'select 1 from `user_table`');
+				$createTableQuery = "CREATE TABLE $this->tableName (emailId varchar(50) primary key, ".
+									"password varchar(50), fName varchar(50), lName varchar(50));";
+				$val = mysqli_query($this->connection, 'select 1 from user_table');
 				if($val === false)
 				{
 					if(mysqli_query($this->connection, $createTableQuery))
@@ -60,7 +60,7 @@ class Db_Handler
 
 	public function createEntry($email, $passwd, $fname, $lname)
 	{
-		$insertIntoQuery = "INSERT INTO `$this->tableName` VALUES('$email', '$passwd', '$fname', '$lname');";
+		$insertIntoQuery = "INSERT INTO $this->tableName VALUES('$email', '$passwd', '$fname', '$lname');";
 		echo $insertIntoQuery;
 		if(mysqli_query($this->connection, $insertIntoQuery))
 		{
@@ -70,6 +70,23 @@ class Db_Handler
 		{
 			return false;
 		}
+	}
+
+	public function checkEmailExists($email)
+	{
+		$selectQuery = "SELECT fName FROM $this->tableName WHERE emailId='".$email."';";
+		$result = mysqli_query($this->connection, $selectQuery);
+		if(mysqli_num_rows($result) == 0)
+		{
+			echo "false";
+			return false;
+		}
+		else
+		{
+			echo "true";
+			return true;
+		}
+		echo $selectQuery;
 	}
 }
 ?>
