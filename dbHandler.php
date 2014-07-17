@@ -33,7 +33,6 @@ class Db_Handler
 				{
 					if(mysqli_query($this->connection, $createTableQuery))
 					{
-						echo "true";
 						return true;
 					}
 					else
@@ -78,15 +77,22 @@ class Db_Handler
 		$result = mysqli_query($this->connection, $selectQuery);
 		if(mysqli_num_rows($result) == 0)
 		{
-			echo "false";
 			return false;
 		}
 		else
 		{
-			echo "true";
 			return true;
 		}
 		echo $selectQuery;
+	}
+
+	public function checkPassword($email, $password)
+	{
+		$selectQuery = "SELECT password FROM $this->tableName WHERE emailId='".$email."';";
+		$result = mysqli_query($this->connection, $selectQuery);
+		$row = mysqli_fetch_array($result);
+		$retrievedPasswd = $row['password'];
+		return ($retrievedPasswd == $password);
 	}
 }
 ?>

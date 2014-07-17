@@ -8,17 +8,17 @@
     <div id="container">
         <h1 class="col-sm-offset-2">Sign In!</h1>
         <br />
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" method="POST" action="signin.php">
             <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-3">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="userEmail">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                 <div class="col-sm-3">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="passWord">
                 </div>
             </div>
             <div class="form-group">
