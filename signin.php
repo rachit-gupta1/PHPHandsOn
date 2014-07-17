@@ -14,6 +14,10 @@
 		{
     		$_SESSION['email'] = $emailID;
 		}
+		else
+		{
+			header( "refresh:0;url=/" );
+		}
 
 		$dbHandler->openConnection();
 		if(!$dbHandler->checkEmailExists($emailID))
