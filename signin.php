@@ -24,7 +24,7 @@
 		{
 			if($dbHandler->checkPassword($emailID, $passwd))
 			{
-				header( "refresh:0;url=index.php" );
+				header( "refresh:0;url=/" );
 			}
 			else
 			{
