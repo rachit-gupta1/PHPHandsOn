@@ -14,6 +14,10 @@
 		{
     		$_SESSION['email'] = $emailID;
 		}
+		else
+		{
+			header( "refresh:0;url=/" );
+		}
 
 		$dbHandler->openConnection();
 		if(!$dbHandler->checkEmailExists($emailID))
@@ -24,7 +28,7 @@
 		{
 			if($dbHandler->checkPassword($emailID, $passwd))
 			{
-				header( "refresh:0;url=/" );
+				header( "refresh:0;url=display.php" );
 			}
 			else
 			{
