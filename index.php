@@ -30,11 +30,13 @@
        <br />
        <h2 class="col-sm-offset-2">Don't have an account?</h2>
        <br />
+       <form action="createAccount.php" method="get">
        <div class="form-group">
                 <div class="col-sm-offset-2">
-                   <input type="button" class="btn btn-primary" value="Create account"/>
+                   <input type="submit" class="btn btn-primary" value="Create account"/>
                </div>
         </div>
+      </form>
    </div>
 </body>
 </html>
